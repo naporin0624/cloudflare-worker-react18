@@ -1,4 +1,7 @@
-name = "cloudflare-react"
-main = "src/index.tsx"
+name = "cloudflare-react-hydrate"
+main = "src/server.tsx"
 compatibility_date = "2022-07-10"
 compatibility_flags = ["streams_enable_constructors"]
+
+[site]
+bucket = "./dist"
