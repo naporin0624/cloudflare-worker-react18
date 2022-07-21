@@ -1,3 +1,6 @@
 {
-  "extends": ["@naporin0624/eslint-config", "@naporin0624/eslint-config/react"]
+  "extends": ["@naporin0624/eslint-config", "@naporin0624/eslint-config/react"],
+  "rules": {
+    "no-console": "off"
+  }
 }

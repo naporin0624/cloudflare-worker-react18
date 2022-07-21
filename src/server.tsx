@@ -1,35 +1,29 @@
 import { Hono } from "hono";
-// import { logger } from "hono/logger";
 import { serveStatic } from "hono/serve-static";
 import React from "react";
 import { renderToReadableStream } from "react-dom/server";
 
 import App from "./App";
+import Html from "./Html";
+import manifest from "./manifest.json";
 
 const app = new Hono();
 app.use("/assets/*", serveStatic({ root: "./" }));
 
 app.get("/", async () => {
+  const files = Object.values(manifest);
+  const entryFile = files.find((file) => file.isEntry);
+
   const stream = await renderToReadableStream(
-    <html>
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        {/* dist の中を見て手で変更してる */}
-        <script type="module" src="/assets/client.d0bd8681.js"></script>
-      </head>
-      <body>
-        <div id="app">
-          <App />
-        </div>
-      </body>
-    </html>
+    <Html script={entryFile?.file}>
+      <App />
+    </Html>
   );
 
   return new Response(stream, {
     headers: {
+      "Content-Type": "text/html; charset=utf-8",
       "X-Content-Type-Options": "nosniff",
-      "Content-Type": "text/html",
     },
   });
 });

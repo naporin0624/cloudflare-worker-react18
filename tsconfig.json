@@ -4,7 +4,8 @@
     "types": ["@cloudflare/workers-types"],
     "strict": true,
 		"esModuleInterop": true,
-    "lib": ["ESNext", "DOM"]
+    "lib": ["ESNext", "DOM"],
+    "resolveJsonModule": true
   },
   "include": ["src"]
 }

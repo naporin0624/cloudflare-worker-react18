@@ -15,7 +15,11 @@
   },
   "private": true,
   "scripts": {
+    "postinstall": "npm run build",
+    "build": "vite build",
+    "postbuild": "cp dist/manifest.json src/manifest.json",
     "start": "wrangler dev",
+    "predeploy": "npm run build",
     "deploy": "wrangler publish",
     "lint": "eslint src"
   },
