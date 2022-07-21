@@ -16,7 +16,9 @@ const Html: FC<Props> = ({ children, script: entryFile }) => {
       </head>
       <body>
         <div id="app">{children}</div>
-        {entryFile ? <script src={entryFile}></script> : null}
+        {entryFile ? (
+          <script async type="module" src={entryFile}></script>
+        ) : null}
       </body>
     </html>
   );

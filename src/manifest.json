@@ -1,7 +1,13 @@
 {
   "src/client.tsx": {
-    "file": "assets/client.9f31dabf.js",
+    "file": "assets/client.ecd48065.js",
     "src": "src/client.tsx",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "_vender.7daa487c.js"
+    ]
+  },
+  "_vender.7daa487c.js": {
+    "file": "assets/vender.7daa487c.js"
   }
 }

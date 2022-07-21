@@ -1,5 +1,7 @@
 import { useReadData, fromAsyncFunction } from "@naporin0624/react-flowder";
-import React, { Suspense, memo, useState, useCallback } from "react";
+import React, { Suspense, memo } from "react";
+
+import Counter from "../components/counter";
 
 import type { FC } from "react";
 
@@ -30,24 +32,4 @@ const SuspendComponent: FC<{ ms?: number }> = ({ ms }) => {
   const d = useReadData(delay(ms));
 
   return <p>delay: {d}</p>;
-};
-
-const Counter = () => {
-  const [count, setCount] = useState(0);
-  const increment = useCallback(() => {
-    setCount((c) => c + 1);
-  }, []);
-  const decrement = useCallback(() => {
-    setCount((c) => c - 1);
-  }, []);
-
-  return (
-    <div>
-      <p>count: {count}</p>
-      <div>
-        <button onClick={increment}>+</button>
-        <button onClick={decrement}>-</button>
-      </div>
-    </div>
-  );
 };
